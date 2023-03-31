@@ -1,1 +1,1 @@
-[click me!](bookcooker.github.io)
+[click me!](https://bookcooker.github.io)
