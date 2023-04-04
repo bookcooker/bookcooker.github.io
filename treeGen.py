@@ -1,52 +1,70 @@
 treeHtml = """
-<HTML lang="zh-cn">
-<HEAD>
-<TITLE>ebxeax</TITLE>
-<LINK REL="stylesheet" TYPE="text/css" HREF="./css/lua.css">
-<link rel="Shortcut Icon" href="./images/favicon.ico" type="image/x-icon" />
-<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=utf-8">
-<STYLE TYPE="text/css">
-blockquote, .display {
-	border: solid #a0a0a0 2px ;
-	border-radius: 8px ;
-	padding: 1em ;
-	margin: 0px ;
-}
+<!DOCTYPE html>
+<html lang="en-US">
 
-.display {
-	word-spacing: 0.25em ;
-}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
-dl.display dd {
-	padding-bottom: 0.2em ;
-}
-
-tt, kbd, code {
-	font-size: 12pt ;
-}
-</STYLE>
-</HEAD>
-
-<BODY>
-
-<H1>
-<A HREF="http://www.github.com/ebxeax"><IMG SRC="./images/favicon.ico" width="100" height="100" ALT="ebxeax"></A>
-Homepage
-</H1>
+    <!-- Setup theme-color -->
+    <!-- start theme color meta headers -->
+    <meta name="theme-color" content="#151515">
+    <meta name="msapplication-navbutton-color" content="#151515">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- end theme color meta headers -->
 
 
-<DIV CLASS="menubar">
-	<A HREF="#about">about</A>
-	&middot;
-	<A HREF="#tutorial">tutorial</A>
-	&middot;
-	<A HREF="#test">test</A>
-	&middot;
-	<A HREF="tree.html">tree</A>
-</DIV>
+    <!-- Setup Google Analytics -->
+
+
+
+    <!-- You can set your favicon here -->
+    <!-- link rel="shortcut icon" type="image/x-icon" href="/hacker/favicon.ico" -->
+
+    <!-- end custom head snippets -->
+
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+    <title>bookcooker | Welcome to bookcooker.</title>
+    <meta name="generator" content="Jekyll v3.9.0">
+    <meta property="og:title" content="bookcooker">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="a new series about blog.">
+    <meta property="og:description" content="a new series about blog.">
+    <link rel="canonical" href="https://github.com/bookcooker/">
+    <meta property="og:url" content="https://bookcooker.github.io/">
+    <meta property="og:site_name" content="bookcooker">
+    <meta name="twitter:card" content="summary">
+    <meta property="twitter:title" content="bookcooker">
+    <script type="application/ld+json">
+{"description":"a new series about blog.","url":"https://github.com/bookcooker/","@type":"WebSite","headline":"bookcooker","name":"bookcooker","@context":"https://schema.org"}</script>
+</head>
+
+<header>
+    <div class="container">
+        <a id="a-title" href="https://bookcooker.github.io/">
+            <h1>bookcooker;</h1>
+        </a>
+        <h2>a new series about blog;</h2>
+
+        <section id="downloads">
+
+            <a href="about.html" class="btn">About;</a>
+            <a href="tree.html" class="btn">Tree;</a>
+            <a href="sample.html" class="btn">Sample;</a>
+            <a href="https://github.com/bookcooker" class="btn btn-github"><span class="icon">Goto GitHub;</a>
+        </section>
+    </div>
+</header>
+
+<body>
 %s
-</BODY>
-</HTML>    
+</body>
+
+</html>
 """
 
 link = """
