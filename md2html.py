@@ -6,7 +6,7 @@ from time import sleep
 
 exts = ['markdown.extensions.extra', 'markdown.extensions.codehilite','markdown.extensions.tables','markdown.extensions.toc']
 html = ""
-h5 = open('./css/h5', 'r')
+h5 = open('./css/h5_post', 'r')
 html = h5.read()
 h5.close
 
