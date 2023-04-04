@@ -60,7 +60,7 @@
 </header>
 
 <body>
-    <div>
+    <div class="container">
         <section id="main_content">
             %s
         </section>
