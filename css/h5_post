@@ -60,7 +60,11 @@
 </header>
 
 <body>
-%s
+    <div>
+        <section id="main_content">
+            %s
+        </section>
+    </div>
 </body>
 
 </html>
