@@ -4,7 +4,7 @@ md/
 temp/
 # Compiled class file
 *.class
-
+/*.sh
 # Eclipse
 .project
 .classpath
