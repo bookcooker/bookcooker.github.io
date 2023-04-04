@@ -60,3 +60,4 @@ if __name__ == '__main__':
     hdir = os.listdir(path = des)
     hdir.reverse()
     treeGen(hdir)
+    os.remove()
