@@ -1,10 +1,10 @@
 md/
 /__pycache__/
-/*.py
+# /*.py
 temp/
 # Compiled class file
 *.class
-/*.sh
+# /*.sh
 # Eclipse
 .project
 .classpath
