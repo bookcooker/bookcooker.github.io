@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+    <!-- Setup theme-color -->
+    <!-- start theme color meta headers -->
+    <meta name="theme-color" content="#151515">
+    <meta name="msapplication-navbutton-color" content="#151515">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- end theme color meta headers -->
+
+
+    <!-- Setup Google Analytics -->
+
+
+
+    <!-- You can set your favicon here -->
+    <!-- link rel="shortcut icon" type="image/x-icon" href="/hacker/favicon.ico" -->
+
+    <!-- end custom head snippets -->
+
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+    <title>bookcooker | Welcome to bookcooker.</title>
+    <meta name="generator" content="Jekyll v3.9.0">
+    <meta property="og:title" content="bookcooker">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="a new series about blog.">
+    <meta property="og:description" content="a new series about blog.">
+    <link rel="canonical" href="https://github.com/bookcooker/">
+    <meta property="og:url" content="https://bookcooker.github.io/">
+    <meta property="og:site_name" content="bookcooker">
+    <meta name="twitter:card" content="summary">
+    <meta property="twitter:title" content="bookcooker">
+    <script type="application/ld+json">
+{"description":"a new series about blog.","url":"https://github.com/bookcooker/","@type":"WebSite","headline":"bookcooker","name":"bookcooker","@context":"https://schema.org"}</script>
+</head>
+
+<header>
+    <div class="container">
+        <a id="a-title" href="https://bookcooker.github.io/">
+            <h1>bookcooker;</h1>
+        </a>
+        <h2>a new series about blog;</h2>
+
+        <section id="downloads">
+
+            <a href="about.html" class="btn">About;</a>
+            <a href="tree.html" class="btn">Tree;</a>
+            <a href="sample.html" class="btn">Sample;</a>
+            <a href="https://github.com/bookcooker" class="btn"> GitHub;</a>
+        </section>
+    </div>
+</header>
+
+<body>
+    <div>
+        <section id="main_content">
+            <p>Data Structure Notes</p>
+<blockquote>
+<p><code>c++
+Author : "ebxeax"
+Version : 1.0
+Refresh Date 2020.11.26
+Description : 
+Just record and review some points about Data Structure.
+Have mistakes that please correct it yourself.</code></p>
+</blockquote>
+<p>链式存储线性表</p>
+<blockquote>
+<p>通过一组任意的存储单元来储存线性表的数据元素</p>
+<p>为了建立数据元素之间的线性关系，对每个链表结点，除了存放元素信息外，还需要存放一个指向后继的指针</p>
+<p><img alt="" src="https://files.cnblogs.com/files/Carraway-Space/Link_zh.bmp" /></p>
+<p>链式存储的宏定义</p>
+<blockquote>
+<p><code>c++
+struct LNode {
+ ElemType data;
+ LNode* next;
+ LNode() {
+     data = 0;
+     next = nullptr;
+ }
+};
+typedef LNode* LinkList;</code></p>
+<p>单链表的第一个结点之前附加一个结点，称为头结点。头结点不存放任何信息，也可以记录表长等相关信息。头结点的指针域指向线性表的第一个元素结点</p>
+<p>头结点和头指针的区别：</p>
+<blockquote>
+<p>不管带不带头结点，头指针始终指向链表的第一个结点，而 头结点是带头结点链表中的第一个结点，结点内通常不存储信息</p>
+</blockquote>
+<p>为什么要设置头结点？</p>
+<blockquote>
+<p>处理操作起来方便 例如：对在第一元素结点前插入结点和删除第一结点起操作与其它结 点的操作就统一了</p>
+<p>无论链表是否为空，其头指针是指向头结点的非空指针，因此空表和非空表的处理也就 统一了。</p>
+</blockquote>
+</blockquote>
+<p>单链表的操作</p>
+<blockquote>
+<p>1.初始化单链表</p>
+<p><code>c++
+int initLinkList(LinkList &amp;L){
+ L=new LNode;
+ if(!L){
+     exit(OVERFLOWS);
+ }
+ L-&gt;next=NULL;
+}</code></p>
+<p>2.销毁单链表</p>
+<p><code>c++
+int destroyLinkList(LinkList &amp;L){
+ LinkList p;
+ while(L){
+     p=L;
+     L=L-&gt;next;
+     delete p;
+     }
+ return OK;
+}</code></p>
+<p>3.清空单链表</p>
+<p><code>c++
+int clearLinkList(LinkList &amp;L){
+ LinkList p,q;
+ p=L-&gt;next;
+ while(p){
+     q=p-&gt;next;
+     delete p;
+     p=q;
+ }
+ L-&gt;next=NULL;
+ return OK;
+}</code></p>
+<p>4.获得单链表长度</p>
+<p><code>c++
+int getLinkListLength(LinkList &amp;L){
+ LinkList p;
+ p=L-&gt;next;
+ int i=0;
+ while(p){
+     i++;
+     p=p-&gt;next;
+ }
+ return i;
+}</code></p>
+<p>5.判断单链表是否为空</p>
+<p><code>c++
+bool isLinkListEmpty(LinkList &amp;L){
+ if(L-&gt;next)
+     return false;
+ else
+     return true;
+}</code></p>
+<p>6.从头部创建单链表</p>
+<p>```c++
+void createLinkList2Title(LinkList &amp;L,int n){
+ L=new LNode;
+ if(!L)
+     exit(OVERFLOWS);
+ L-&gt;next=NULL;
+ for(int i=n;i&gt;0;i--){
+     LNode *p=new LNode;
+     if(!p)
+         exit(OVERFLOWS);
+     cout&lt;&lt;"Please input elem's data: \n";
+     cin&gt;&gt;p-&gt;data;
+     p-&gt;next=L-&gt;next;
+     L-&gt;next=p;</p>
+<p>}
+```</p>
+<p>7.从头部创建单链表</p>
+<p>```c++
+void crevoid createLinklist2Tail(LinkList&amp; L, int n)
+{   //正位序输入n个元素的值，建立带表头结点的单链表L 
+ L = new LNode;
+ if (!L) exit(OVERFLOWS);       //存储分配失败
+ L-&gt;next = NULL;
+ LNode<em> r = L;//尾指针r指向头结点 
+ for (int i = 0; i &lt; n; i++) {
+     LNode</em> p = new LNode;//生成新结点 
+     if (!p) exit(OVERFLOWS);       //存储分配失败
+     cout &lt;&lt; "请输入元素的值:";
+     cin &gt;&gt; p-&gt;data;         //输入元素值 
+     p-&gt;next = NULL;
+     r-&gt;next = p;            //插入到表尾 
+     r = p;  //r指向新的尾结点 
+ }
+}ateLinkList2Tail(LinkList &amp;L,int n){</p>
+<p>}
+```</p>
+<p>8.输出单链表全部元素</p>
+<p><code>c++
+int linklistAll(LinkList p, int len){
+ if (p == NULL)
+     return ERROR;
+ p = p-&gt;next;
+ for (int i = 0; i &lt;len; i++) {
+     cout &lt;&lt; p-&gt;data &lt;&lt; "\n";
+     p = p-&gt;next;
+ }
+ return OK;
+}</code></p>
+<p>9.排序</p>
+<p>```c++
+void swap(ElemType&amp; a, ElemType&amp; b) {
+ ElemType temp;
+ temp = a;
+ a = b;
+ b = temp;
+}</p>
+<p>void sorted(LinkList &amp;L,int len) {
+ //ElemType temp;
+ int i;
+ LNode<em> r = L;
+ LNode</em> p = r-&gt;next;
+ for (i = 0; i &lt; len; i++) {
+     if (r-&gt;data &gt; p-&gt;data)
+         swap(r-&gt;data, p-&gt;data);
+     r = r-&gt;next;
+     p = p-&gt;next;
+ }</p>
+<p>}
+```</p>
+<p>10.按序号查找结点</p>
+<p>```c++
+LNode <em>GetElem(LinkList L,int i){
+    int j=1;
+    LNode</em>p=L-&gt;next;
+    if(i==0)return L;
+    if(i&lt;1)return NULL;
+    while(p&amp;&amp;j<i){
+        p=p->next;
+        j++;
+    }
+    return p;
+}</p>
+<p>```</p>
+<p>11.按值查找结点</p>
+<p><code>c++
+LNode *locateElem(LinkList L,ElemType e){
+    LNode *p=L-&gt;next;
+    while(p!=NULL&amp;&amp;p-&gt;data!=e)
+        p=p-&gt;next;
+    return p;
+}</code></p>
+<p>12.插入元素</p>
+<p><code>c++
+void insert(LinkList &amp;L,ElemType e){
+    LNode*p=L-&gt;next;
+    LNode*s=p-&gt;next; 
+    p=GetElem(L,i-1);
+    s-&gt;next=p-&gt;next;
+    p-&gt;next=s;        
+}</code></p>
+<p>13.删除元素</p>
+<p><code>c++
+void insert(LinkList &amp;L,ElemType e){
+    LNode*p=L-&gt;next;
+    LNode*q=p-&gt;next; 
+    p=GetElem(L,i-1);
+    p-&gt;next=q-&gt;next;
+    free(q);      
+}</code></p>
+</blockquote>
+<p>附录：</p>
+<p>完整程序：</p>
+<blockquote>
+<p>```c++</p>
+<h1 id="include-eofzf6null">include <stdio.h> // EOF(=^Z或F6),NULL</h1>
+<h1 id="include-srand-rand-exitn">include <stdlib.h> // srand( ) ,rand( ),exit(n)</h1>
+<h1 id="include-malloc-alloc-realloc">include <malloc.h> // malloc( ),alloc( ),realloc( )等</h1>
+<h1 id="include-int_max">include <limits.h> // INT_MAX等</h1>
+<h1 id="include">include <string.h></h1>
+<h1 id="include_1">include <ctype.h></h1>
+<h1 id="include-floorceil-abs">include <math.h> // floor(),ceil( ),abs( )</h1>
+<h1 id="include-coutcin">include <iostream> // cout,cin</h1>
+<h1 id="include-clock-clk_tckclock_t">include <time.h> // clock( ),CLK_TCK,clock_t</h1>
+<h1 id="define-true-1">define    TRUE          1</h1>
+<h1 id="define-false-0">define     FALSE        0</h1>
+<h1 id="define-ok-1">define     OK              1</h1>
+<h1 id="define-error-0">define     ERROR      0</h1>
+<h1 id="define-infeasible-1">define     INFEASIBLE     -1</h1>
+<h1 id="define-overflows-2">define     OVERFLOWS     -2</h1>
+<p>typedef      int         Status;      // Status是函数的类型,其值是函数结果状态代码，如OK等
+typedef      int   ElemType;</p>
+<h1 id="define-maxsize-100">define  MAXSIZE 100     //最大长度</h1>
+<h1 id="define-list_init_size-100">define LIST_INIT_SIZE 100 // 线性表存储空间的初始分配量</h1>
+<p>using namespace std;</p>
+<p>struct LNode {
+ ElemType data;
+ LNode<em> next;
+ LNode() {
+     data = 0;
+     next = nullptr;
+ }
+};
+typedef LNode</em> LinkList;
+// *LinkList为LNode类型的指针</p>
+<p>int initLinklist(LinkList&amp; L) {
+ L = new LNode;
+ if (!L) {
+     exit(OVERFLOWS);
+ }
+ L-&gt;next = NULL;
+ return OK;
+}</p>
+<p>int destroyLinklist(LinkList&amp; L) {
+ LinkList p;
+ while (L) {
+     p = L;
+     L = L-&gt;next;
+     delete p;
+ }
+ return OK;
+}</p>
+<p>int clearLinklist(LinkList&amp; L) {
+ LinkList p, q;
+ p = L-&gt;next;
+ while (p) {
+     q = p-&gt;next;
+     delete p;
+     p = q;
+ }
+ L-&gt;next = NULL;
+ return OK;
+}</p>
+<p>int linklistLength(LinkList&amp; L) {
+ LinkList p;
+ p = L-&gt;next;
+ int i = 0;
+ while (p) {
+     i++;
+     p = p-&gt;next;
+ }
+ return i;
+}</p>
+<p>bool isLinklistEmpty(LinkList&amp; L) {
+ if (L-&gt;next)
+     return false;
+ else
+     return true;
+}</p>
+<p>void createLinklist2Title(LinkList&amp; L, int n) {
+ L = new LNode;
+ if (!L)
+     exit(OVERFLOWS);
+ L-&gt;next = NULL;
+ for (int i = n; i &gt; 0; i--) {
+     LNode* p = new LNode;
+     if (!p)
+         exit(OVERFLOWS);
+     cout &lt;&lt; "请输入元素的值:";
+     cin &gt;&gt; p-&gt;data;
+     p-&gt;next = L-&gt;next;
+     L-&gt;next = p;
+ }
+}</p>
+<p>void createLinklist2Tail(LinkList&amp; L, int n)
+{   //正位序输入n个元素的值，建立带表头结点的单链表L 
+ L = new LNode;
+ if (!L) exit(OVERFLOWS);       //存储分配失败
+ L-&gt;next = NULL;
+ LNode<em> r = L;//尾指针r指向头结点 
+ for (int i = 0; i &lt; n; i++) {
+     LNode</em> p = new LNode;//生成新结点 
+     if (!p) exit(OVERFLOWS);       //存储分配失败
+     cout &lt;&lt; "请输入元素的值:";
+     cin &gt;&gt; p-&gt;data;         //输入元素值 
+     p-&gt;next = NULL;
+     r-&gt;next = p;            //插入到表尾 
+     r = p;  //r指向新的尾结点 
+ }
+}</p>
+<p>int linklistAll(LinkList p, int len){
+ if (p == NULL)
+     return ERROR;
+ p = p-&gt;next;
+ for (int i = 0; i &lt;len; i++) {
+     cout &lt;&lt; p-&gt;data &lt;&lt; "\n";
+     p = p-&gt;next;
+ }
+ return OK;
+}</p>
+<p>void swap(ElemType&amp; a, ElemType&amp; b) {
+ ElemType temp;
+ temp = a;
+ a = b;
+ b = temp;
+}</p>
+<p>void sorted(LinkList &amp;L,int len) {
+ //ElemType temp;
+ int i;
+ LNode<em> r = L;
+ LNode</em> p = r-&gt;next;
+ for (i = 0; i &lt; len; i++) {
+     if (r-&gt;data &gt; p-&gt;data)
+         swap(r-&gt;data, p-&gt;data);
+     r = r-&gt;next;
+     p = p-&gt;next;
+ }</p>
+<p>}</p>
+<p>int main() {
+ LinkList p;
+ initLinklist(p);
+ int n;
+ cout &lt;&lt; "请输入单链表的长度 : ";
+ cin &gt;&gt; n;
+ createLinklist2Tail(p, n);
+ int len=linklistLength(p);
+ linklistAll(p, len);
+ printf("After Sorted func:\n");
+ sorted(p, len);
+ linklistAll(p, len);
+ return 0;
+}
+```</p>
+</blockquote>
+</blockquote>
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+    <!-- Setup theme-color -->
+    <!-- start theme color meta headers -->
+    <meta name="theme-color" content="#151515">
+    <meta name="msapplication-navbutton-color" content="#151515">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- end theme color meta headers -->
+
+
+    <!-- Setup Google Analytics -->
+
+
+
+    <!-- You can set your favicon here -->
+    <!-- link rel="shortcut icon" type="image/x-icon" href="/hacker/favicon.ico" -->
+
+    <!-- end custom head snippets -->
+
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+    <title>bookcooker | Welcome to bookcooker.</title>
+    <meta name="generator" content="Jekyll v3.9.0">
+    <meta property="og:title" content="bookcooker">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="a new series about blog.">
+    <meta property="og:description" content="a new series about blog.">
+    <link rel="canonical" href="https://github.com/bookcooker/">
+    <meta property="og:url" content="https://bookcooker.github.io/">
+    <meta property="og:site_name" content="bookcooker">
+    <meta name="twitter:card" content="summary">
+    <meta property="twitter:title" content="bookcooker">
+    <script type="application/ld+json">
+{"description":"a new series about blog.","url":"https://github.com/bookcooker/","@type":"WebSite","headline":"bookcooker","name":"bookcooker","@context":"https://schema.org"}</script>
+</head>
+
+<header>
+    <div class="container">
+        <a id="a-title" href="https://bookcooker.github.io/">
+            <h1>bookcooker;</h1>
+        </a>
+        <h2>a new series about blog;</h2>
+
+        <section id="downloads">
+
+            <a href="about.html" class="btn">About;</a>
+            <a href="tree.html" class="btn">Tree;</a>
+            <a href="sample.html" class="btn">Sample;</a>
+            <a href="https://github.com/bookcooker" class="btn"> GitHub;</a>
+        </section>
+    </div>
+</header>
+
+<body>
+    <div>
+        <section id="main_content">
+            <blockquote>
+<p>Data Structure Notes</p>
+<blockquote>
+<p><code>c++
+Author : "ebxeax"
+Version : 1.0
+Refresh Date 2020.11.26
+Description : 
+Just record and review some points about Data Structure.
+Have mistakes that please correct it yourself.</code></p>
+</blockquote>
+<p>数据结构的基本概念</p>
+<blockquote>
+<p>1.数据</p>
+<p>2.数据元素：</p>
+<blockquote>
+<p>数据的基本单位，一个数据元素可有若干个数据项构成，数据项是不可分割的最小单位</p>
+</blockquote>
+<p>3.数据类型</p>
+<p>4.抽象数据类型(ADT[Abstract Data Type]):</p>
+<blockquote>
+<p>数学模型在计算机的一种实现，包括数据对象、数据关系、基本操作，如建立一个有限状态机模型</p>
+</blockquote>
+<p>5.数据结构：数据元素之间的关系称之为结构，数据结构包括三方面：逻辑结构、存储结构、数据运算(程序=算法+数据结构)</p>
+<p>6.逻辑结构：数据间的逻辑关系，与数据存储独立，分为线性结构和非线性结构</p>
+<blockquote>
+<p>```mermaid
+graph TD
+逻辑结构--&gt;线性结构
+逻辑结构--&gt;非线性结构
+线性结构--&gt;一般线性表
+线性结构--&gt;受限线性表
+线性结构--&gt;线性表推广
+受限线性表--&gt;栈和队列
+受限线性表--&gt;串
+线性表推广--&gt;数组
+线性表推广--&gt;广义表
+非线性结构--&gt;非线性表
+非线性表--&gt;集合
+非线性表--&gt;树形结构
+非线性表--&gt;图形结构
+树形结构--&gt;一般树
+树形结构--&gt;二叉树
+图形结构--&gt;有向图
+图形结构--&gt;无向图</p>
+<p>```</p>
+</blockquote>
+<p>7.物理结构：数据元素的表示以及关系的表示，主要有：顺序存储、链式存储、索引存储、散列存储</p>
+<p>8.算法评估</p>
+<blockquote>
+<p>（1）特性：有穷、确定、可行、输入、输出</p>
+<p>（2）时间复杂度：衡量算法随问题规模的增大，算法执行的时间增长的快慢</p>
+<blockquote>
+<p>T(n)=O(f(n))，f(n)为算法运算频度，一般采用最坏情况下的时间复杂度</p>
+<p>计算方法：取算法时间增长最快的函数项，忽略其系数</p>
+<p>a加法规则：</p>
+<blockquote>
+<p>$$
+T(n)=T_1(n)+T_2(n)=O(f(n))+O(g(n))=O(max(f(n),g(n)))
+$$</p>
+<p>多项式相加，只保留最高阶的项，且系数变为1</p>
+</blockquote>
+<p>b乘法规则：</p>
+<blockquote>
+<p>$$
+T(n)=T_1(n)<em>T_2(n)=O(f(n))</em>O(g(n))=O(f(n)*g(n))
+$$</p>
+<p>多项式相乘，都保留</p>
+</blockquote>
+<p>从左到右性能依次降低：</p>
+<blockquote>
+<p>$$
+O(1)&lt;O(log_2n)&lt;O(n)&lt;O(nlog_2n)&lt;O(n^2)&lt;O(n^3)&lt;O(2^n)
+$$</p>
+</blockquote>
+<p>单循环体型：</p>
+<blockquote>
+<p>例题1：计算下列程序的时间复杂度</p>
+<p><code>C++
+int i,sum  //执行1次
+sum=0  //执行1次
+for(i=0;i&lt;=n;i++)//int i=0执行1次，i&lt;=n执行n+2次，i++执行n+1次
+   sum+=i; //执行n+1次</code></p>
+<p>时间分析： 该算法执行了3n+6个语句。 假设每个语句执行时间一致，均为常数t。则总时间 
+$$
+T=(3n+6)*t
+$$
+随着问题规模n的增大，总时间的增长率与n的增长率一致，所以复杂度为
+$$
+O(n)
+$$</p>
+<p>结论： </p>
+<blockquote>
+<p>复杂度是关于增长率的，所以可以直接忽视常数项</p>
+<p>一般可以直接关注循环段基本操作语句</p>
+<blockquote>
+<p><code>c++
+sum+=i;</code></p>
+</blockquote>
+<p>的执行次数</p>
+</blockquote>
+</blockquote>
+<p>例题2：</p>
+<blockquote>
+<p><code>c++
+int sum,i;
+sum=0;
+for (i = 1;i &lt;= n;i=2*i){
+   sum=sum+i;</code></p>
+<p>时间分析：</p>
+<p>i 取值：1,2,4,8… 
+满足条件：2^𝑘 ≤ n
+K&gt;𝑙𝑜𝑔_2𝑛时， 跳出循环
+所以循环体执行次数：⌈𝑙𝑜𝑔_2𝑛⌉ 故时间复杂度为O(logn).i 取值：1,2,4,8</p>
+</blockquote>
+</blockquote>
+<p>多循环体型</p>
+<blockquote>
+<p>两个运算法则：乘法规则（嵌套循环）、加法规则（若干循环）</p>
+<p>例题3：</p>
+<blockquote>
+<p><code>c++
+int x,y,i,j;
+for(i=1;i&lt;=n;i++)
+x++;
+for(i=1;i&lt;=n;i++)
+for(j=1;j&lt;=n;j++)
+    y++;</code></p>
+<p>两个循环体是独立的，采用加法规则： 
+$$</p>
+<blockquote>
+<p>T(n)=T_1(n)+T_2(n)
+$$</p>
+</blockquote>
+<p>$$
+=max(T_1(n),T_2(n)) =O(n^2)
+$$</p>
+</blockquote>
+<p>例题4：</p>
+<blockquote>
+<p>```c++
+int i,j,sum;</p>
+<blockquote>
+<blockquote>
+<p>for (i=1;i&lt;=n;i++)
+for(j=1;j&lt;=n;j=2*j)
+    sum=sum+j;
+```</p>
+<p>两个循环体是嵌套的，采用乘法规则：</p>
+</blockquote>
+</blockquote>
+<p>$$
+T(n)=T_1(n)*T_2(n)
+$$</p>
+<p>$$</p>
+<blockquote>
+<p>=O(nlogn)
+$$</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>（3）空间复杂度：衡量算法随问题规模的增大，算法所需空间的快慢</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>S(n)=O(g(n))，算法所需空间的增长率和g(n)的增长率相同</p>
+</blockquote>
+</blockquote>
+<p>空间复杂度S(n)指算法运行过程中所使用的辅助空间的大小</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>线性表</p>
+<blockquote>
+<p>1.定义：线性表是具有相同数据类型的n个数据类型的有限序列，n为表长</p>
+<blockquote>
+<p>线性表中第一个元素称为表头元素，最后一个元素称为表位元素</p>
+<p>除第一个元素外，每个元素仅有一个直接前驱，除最后一个元素外，每个元素有且仅有一个直接后继</p>
+</blockquote>
+</blockquote>
+<p>顺序存储</p>
+<blockquote>
+<p>线性表的顺序存储又称顺序表</p>
+<p>使用一组地址连续的存储单元(数组等)依次存储线性表的数据元素，从而使得逻辑相邻的两个元素在物理位置上也相邻</p>
+<p>三个属性：</p>
+<blockquote>
+<p>1.存储空间的起始位置</p>
+<p>2.顺序表最大存储容量</p>
+<p>3.顺序表当前的长度</p>
+</blockquote>
+<p>宏定义</p>
+<blockquote>
+<p>静态分配大小</p>
+<p>```c++</p>
+<h1 id="define-maxsize-100">define MaxSize 100</h1>
+<p>typedef int Elemtype
+typedef struct{
+Elemtype elem[MaxSize];
+int length;
+}SqList;
+```</p>
+<p>动态分配大小(这里动态指空间大小运行时决定，但分配大小后，空间大小被固定)</p>
+<p><code>c++
+typedef int Elemtype
+typedef struct{
+Elemtype *elem;
+int length;
+}SqList;</code></p>
+<p>优点：访问效率高、存储密度高</p>
+<p>缺点：插入删除操作复杂</p>
+</blockquote>
+<p>顺序存储线性表操作</p>
+<blockquote>
+<p>1.初始化顺序存储线性表</p>
+<blockquote>
+<p><code>c++
+int initLinklist(SqList &amp;L){
+L.elem=new Elemtype[MaxSize];
+if(!L.elem)
+  exit(OVERFLOWS);
+L.length=0;
+return OK;
+}</code></p>
+<p>（1）创建一个顺序存储表后，需要初始化，首先根据数组大小通过new在堆空间开辟一段连续的空间赋值于先前创建的顺序存储表的elem空间</p>
+<p>（2）检查elem是否存在，不存在溢出退出程序</p>
+<p>（3）将length元素赋值为0，即设置顺序存储线性表长度为0</p>
+</blockquote>
+<p>2.销毁顺序存储线性表</p>
+<blockquote>
+<p><code>c++
+void destroyList(SqList &amp;L){
+if(L.elem)
+  delete(L.elem);
+}</code></p>
+<p>如果线性表存在，删除线性表elem开辟的空间</p>
+</blockquote>
+<p>3.清空顺序存储线性表</p>
+<blockquote>
+<p><code>c++
+void clearList(SqList &amp;L){
+L.length=0;
+}</code></p>
+<p>将线性表的长度置为0</p>
+</blockquote>
+<p>4.判断顺序存储线性表是否为空</p>
+<blockquote>
+<p><code>c++
+bool isEmpty(SqList &amp;L){
+if(L.length==0)
+  return 1;
+else
+  return 0;
+}</code></p>
+<p>判断线性表长度是否为0，并返回相应bool值</p>
+</blockquote>
+<p>5.引用类型按下表获取顺序存储线性表元素</p>
+<blockquote>
+<p><code>c++
+int getElem(SqList L,int i,type&amp;e){
+ if(i&lt;1||i&gt;L.length)
+     return ERROR;
+ e=L.elem[i-1];
+ return OK;
+}</code></p>
+<p>（1）先检查传递参数下标量是否正确</p>
+<p>（2）通过访问elem内数据存入引用类型变量内</p>
+</blockquote>
+<p>6.按下表获取顺序存储线性表元素</p>
+<blockquote>
+<p><code>c++
+Elemtype getElem(SqList L,int i){
+    if(i&lt;1||i&gt;L.length)
+     return ERROR;
+ return L.elem[i-1];
+}</code></p>
+<p>（1）先检查传递参数下标量是否正确</p>
+<p>（2）通过访问elem内数据并返回</p>
+</blockquote>
+<p>7.引用类型按值查询顺序存储线性表元素下标</p>
+<blockquote>
+<p><code>c++
+int locateElem(SqList L,Elemtype e,int &amp;i){
+    for(int i=0;i&lt;L.length;i++)
+     if(L.elem[i]==e)
+         return OK;
+}</code></p>
+<p>按照elem开辟空间进行迭代，当迭代元素与目标元素值相等时，将迭代量赋值于引用类型下标变量</p>
+</blockquote>
+<p>8.按值获取顺序存储线性表元素下标</p>
+<blockquote>
+<p><code>c++
+int locateElem(SqList L,Elemtype e){
+ for(int i=0;i&lt;L.length;i++)
+     if(L.elem[i]==e)
+         return i;
+}</code></p>
+<p>按照elem开辟空间进行迭代，当迭代元素与目标元素值相等时，将迭代量返回</p>
+</blockquote>
+<p>9.按下标插入元素</p>
+<blockquote>
+<p><code>c++
+int listInsert(SqList &amp;L,type e,int i){
+ if(i&lt;1||i&gt;L.length)
+     return ERROR;
+ ++L.length;
+ for(int j=L.length-1;j&gt;=i-1;j--)
+     L.elem[j+1]=L.elem[j];
+ L.elem[i-1]=e;
+ return OK;
+}</code></p>
+<p>（1）先检查传递参数下标量是否正确</p>
+<p>（2）增加线性表长度</p>
+<p>（3）按照目标元素位置，将其尾部元素后移1偏移量</p>
+<p>（4）将目标元素存入下标位置</p>
+<p><strong>时间复杂度分析:</strong></p>
+<blockquote>
+<p>（1）
+$$
+最好情况：在表尾插入(即i=n+1)
+$$</p>
+<p>$$
+元素后移语句执行的时间复杂度为O(1)
+$$</p>
+<p>（2）
+$$
+最坏情况：在表头插入(即i=1)
+$$</p>
+<p>$$
+元素后移语句执行n次，时间复杂度为O(n)
+$$</p>
+<p>（3）
+$$
+平均情况：假设p_i(p_i=1/(n+1))
+$$</p>
+<p>$$
+是第i个位置上插入一个结点的概率
+$$</p>
+<p>$$
+则在长度为n的线性表中插入一个节点是需要移动结点的平均次数为
+$$</p>
+<p>$$
+\begin{equation*}</p>
+<p>f = \sum_{i=1}^{n+1}p_i(n-i-1)</p>
+<p>\end{equation*}
+$$</p>
+<p>$$
+\begin{equation*}</p>
+<p>=\sum_{i=1}^{n+1}{\frac{n+1}{n-i+1}}</p>
+<p>\end{equation*}
+$$</p>
+<p>$$
+\begin{equation*}</p>
+<p>=\frac{1}{n+1} \sum_{i=1}^{n+1}(n-i-1)</p>
+<p>\end{equation*}
+$$</p>
+<p>$$
+=\frac{1}{n+1}\frac{n(n+2)}{2}=\frac{n}{2}
+$$</p>
+<p>$$
+因此顺序存储线性表的插入算法平均时间复杂度为O(n)
+$$</p>
+</blockquote>
+</blockquote>
+<p>10.按下标删除元素</p>
+<blockquote>
+<p><code>c++
+int listDelete(SqList &amp;L, int i) {
+    if ((i &lt; 1) || (i &gt; L.length))
+        return ERROR;
+    for (int j = i; i &lt;= L.length - 1; j++) {
+        L.elem[j - 1] = L.elem[j];
+        --L.length;
+    }
+    return OK;
+}</code></p>
+<p>（1）先检查传递参数下标量是否正确</p>
+<p>（2）按照目标元素位置，将其头部元素前移1偏移量</p>
+<p>（3）减少线性表长度</p>
+<p><strong>时间复杂度分析:</strong></p>
+<blockquote>
+<p>（1）
+$$
+最好情况：在表尾插入(即i=n)
+$$</p>
+<p>$$
+无需移动元素，时间复杂度为O(1)
+$$</p>
+<p>（2）
+$$
+最坏情况：在表头插入(即i=1)
+$$</p>
+<p>$$
+需移动除第一个元素外的所有元素，时间复杂度为O(n)
+$$</p>
+<p>（3）
+$$
+平均情况：假设p_i(p_i=1/(n+1))
+$$</p>
+<p>$$
+是第i个位置上插入一个结点的概率
+$$</p>
+<p>$$
+则在长度为n的线性表中插入一个节点是需要移动结点的平均次数为
+$$</p>
+<p>$$
+\begin{equation*}</p>
+<p>f = \sum_{i=1}^{n}p_i(n-i)</p>
+<p>\end{equation*}
+$$</p>
+<p>$$
+\begin{equation*}</p>
+<p>=\sum_{i=1}^{n}{\frac{n}{n-i}}</p>
+<p>\end{equation*}
+$$</p>
+<p>$$
+\begin{equation*}</p>
+<p>=\frac{1}{n} \sum_{i=1}^{n}(n-i)</p>
+<p>\end{equation*}
+$$</p>
+<p>$$
+=\frac{1}{n}\frac{n(n-1)}{2}=\frac{n-1}{2}
+$$</p>
+<p>$$
+因此顺序存储线性表的插入算法平均时间复杂度为O(n)
+$$</p>
+</blockquote>
+</blockquote>
+<p>11.创建顺序存储线性表</p>
+<blockquote>
+<p><code>c++
+int createList(SqList &amp;L, int n) {
+    type e;
+    L.length = n;
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; "Please in put an element:";
+        cin &gt;&gt; e;
+        L.elem[i] = e;
+    }
+    return OK;
+}</code></p>
+</blockquote>
+<p>11.打印顺序存储线性表内元素</p>
+<blockquote>
+<p><code>c++
+void printList(SqList L) {
+    printf("\nList's element：\n");
+    for (int i = 0; i &lt; L.length; i++) {
+        cout &lt;&lt; "elem[" &lt;&lt; i &lt;&lt; "] =" &lt;&lt; L.elem[i] &lt;&lt; endl;
+    }
+}</code></p>
+</blockquote>
+</blockquote>
+</blockquote>
+        </section>
+    </div>
+</body>
+
+</html>

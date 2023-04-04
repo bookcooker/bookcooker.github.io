@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
     <!-- Setup theme-color -->
@@ -60,43 +60,54 @@
 </header>
 
 <body>
-
-<li><a href="./html/DS_0011_basicConcept.html" title="DS_0011_basicConcept">DS_0011_basicConcept</a>
-</li>
-
-<li><a href="./html/DS_0012_linearTable.html" title="DS_0012_linearTable">DS_0012_linearTable</a>
-</li>
-
-<li><a href="./html/DB_001_introduce-database.html" title="DB_001_introduce-database">DB_001_introduce-database</a>
-</li>
-
-<li><a href="./html/OS_001_introduction-Operator-System.html" title="OS_001_introduction-Operator-System">OS_001_introduction-Operator-System</a>
-</li>
-
-<li><a href="./html/DS_other_逆波兰表达式——中缀表达式转后缀表达式.html" title="DS_other_逆波兰表达式——中缀表达式转后缀表达式">DS_other_逆波兰表达式——中缀表达式转后缀表达式</a>
-</li>
-
-<li><a href="./html/DS_010-search-algorithm.html" title="DS_010-search-algorithm">DS_010-search-algorithm</a>
-</li>
-
-<li><a href="./html/DS_002_linearTable.html" title="DS_002_linearTable">DS_002_linearTable</a>
-</li>
-
-<li><a href="./html/DS_001_introduction.html" title="DS_001_introduction">DS_001_introduction</a>
-</li>
-
-<li><a href="./html/DS_0015_singleLinkedTable.html" title="DS_0015_singleLinkedTable">DS_0015_singleLinkedTable</a>
-</li>
-
-<li><a href="./html/OS_002_Sync-problem.html" title="OS_002_Sync-problem">OS_002_Sync-problem</a>
-</li>
-
-<li><a href="./html/DS_0013_doubleLinkedTable.html" title="DS_0013_doubleLinkedTable">DS_0013_doubleLinkedTable</a>
-</li>
-
-<li><a href="./html/DS_0014_RecircleLinkedList.html" title="DS_0014_RecircleLinkedList">DS_0014_RecircleLinkedList</a>
-</li>
-
+    <div>
+        <section id="main_content">
+            <p>Data Structure Notes</p>
+<blockquote>
+<p><code>c++
+Author : "ebxeax"
+Version : 1.0
+Refresh Date 2020.11.26
+Description : 
+Just record and review some points about Data Structure.
+Have mistakes that please correct it yourself.</code></p>
+</blockquote>
+<p>链式存储循环单链表</p>
+<blockquote>
+<p>区别：循环链表最后一个结点的指针不是NULL，而是指向头结点，从而形成一个闭环</p>
+<p>单链表：</p>
+<p><code>mermaid
+graph LR
+Head--&gt;a1--&gt;a2--&gt;a3--&gt;a....-&gt;an--&gt;NULL</code></p>
+<p>循环链表：</p>
+<p><code>mermaid
+graph LR
+Head--&gt;a1--&gt;a2--&gt;a3--&gt;a....-&gt;an
+an--&gt;Head</code></p>
+<blockquote>
+<p>判空条件：</p>
+<blockquote>
+<p>循环单链表的判空条件不是头结点的后继指针是否为空，而是它是否等于头指针</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>链式存储循环单链表</p>
+<blockquote>
+<p>循环双链表：类比循环单链表，循环双链表链表区别于双链表就是首尾结点构成环</p>
+<p>```mermaid
+graph LR
+Head--&gt;a1--&gt;a2--&gt;a3--&gt;a....-&gt;an--&gt;Head
+an--&gt;a....-&gt;a3--&gt;a2--&gt;a1--&gt;Head--&gt;an</p>
+<p>```</p>
+<blockquote>
+<p>判空条件：</p>
+<blockquote>
+<p>当循环双链表为空表时，其头结点的prior域和next域都等于Head</p>
+</blockquote>
+</blockquote>
+</blockquote>
+        </section>
+    </div>
 </body>
 
 </html>

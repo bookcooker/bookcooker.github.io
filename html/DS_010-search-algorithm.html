@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+    <!-- Setup theme-color -->
+    <!-- start theme color meta headers -->
+    <meta name="theme-color" content="#151515">
+    <meta name="msapplication-navbutton-color" content="#151515">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- end theme color meta headers -->
+
+
+    <!-- Setup Google Analytics -->
+
+
+
+    <!-- You can set your favicon here -->
+    <!-- link rel="shortcut icon" type="image/x-icon" href="/hacker/favicon.ico" -->
+
+    <!-- end custom head snippets -->
+
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+    <title>bookcooker | Welcome to bookcooker.</title>
+    <meta name="generator" content="Jekyll v3.9.0">
+    <meta property="og:title" content="bookcooker">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="a new series about blog.">
+    <meta property="og:description" content="a new series about blog.">
+    <link rel="canonical" href="https://github.com/bookcooker/">
+    <meta property="og:url" content="https://bookcooker.github.io/">
+    <meta property="og:site_name" content="bookcooker">
+    <meta name="twitter:card" content="summary">
+    <meta property="twitter:title" content="bookcooker">
+    <script type="application/ld+json">
+{"description":"a new series about blog.","url":"https://github.com/bookcooker/","@type":"WebSite","headline":"bookcooker","name":"bookcooker","@context":"https://schema.org"}</script>
+</head>
+
+<header>
+    <div class="container">
+        <a id="a-title" href="https://bookcooker.github.io/">
+            <h1>bookcooker;</h1>
+        </a>
+        <h2>a new series about blog;</h2>
+
+        <section id="downloads">
+
+            <a href="about.html" class="btn">About;</a>
+            <a href="tree.html" class="btn">Tree;</a>
+            <a href="sample.html" class="btn">Sample;</a>
+            <a href="https://github.com/bookcooker" class="btn"> GitHub;</a>
+        </section>
+    </div>
+</header>
+
+<body>
+    <div>
+        <section id="main_content">
+            <h1 id="_1">查找</h1>
+<h2 id="1">1.顺序查找</h2>
+<h3 id="_2">一般表</h3>
+<p>（1）代码</p>
+<div class="codehilite"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="p">{</span>
+<span class="w">    </span><span class="n">ElemType</span><span class="w"> </span><span class="o">*</span><span class="n">elem</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">tableLen</span><span class="p">;</span>
+<span class="p">}</span><span class="n">SSTable</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">searchSeq</span><span class="p">(</span><span class="n">SSTable</span><span class="w"> </span><span class="n">ST</span><span class="p">,</span><span class="w"> </span><span class="n">ElemType</span><span class="w"> </span><span class="n">key</span><span class="p">){</span>
+<span class="w">    </span><span class="n">ST</span><span class="p">.</span><span class="n">elem</span><span class="p">[</span><span class="n">e</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span><span class="p">;</span><span class="w">   </span><span class="c1">//设置哨兵</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">ST</span><span class="p">.</span><span class="n">tableLen</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w">   </span><span class="c1">//存在返回, 不存在返回1</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>（2）设置哨兵：可以不必判断是否越界，注意数据下表从1开始
+（3）ASL
+$$
+如果不能知道查找概率，可先对记录的查找概率进行排序，是表中的记录按查找概率从小到大\
+ASL_{success} = \sum_{i=1}^{n} P_i(n-i+1) = \frac{n+1}{2}\
+ASL_{unsuccess} = n+1\
+$$
+（4）优缺点
+优点：对数据的存储无要求，顺序存储或者链式存储皆可
+缺点：当n较大，平均查找长度较大，效率低</p>
+<h3 id="_3">有序表</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="n">id1</span><span class="p">((</span><span class="mi">10</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id2</span><span class="p">((</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">id1</span><span class="p">((</span><span class="mi">10</span><span class="p">)).</span><span class="o">-&gt;-</span><span class="n">infinity</span><span class="p">,</span><span class="mi">10</span>
+<span class="n">id2</span><span class="p">((</span><span class="mi">20</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id3</span><span class="p">((</span><span class="mi">30</span><span class="p">))</span>
+<span class="n">id2</span><span class="p">((</span><span class="mi">20</span><span class="p">)).</span><span class="o">-&gt;-</span><span class="n">infinity</span><span class="p">,</span><span class="mi">20</span>
+<span class="n">id3</span><span class="p">((</span><span class="mi">30</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id4</span><span class="p">((</span><span class="mi">40</span><span class="p">))</span>
+<span class="n">id3</span><span class="p">((</span><span class="mi">30</span><span class="p">)).</span><span class="o">-&gt;-</span><span class="n">infinity</span><span class="p">,</span><span class="mi">30</span>
+<span class="n">id4</span><span class="p">((</span><span class="mi">40</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id5</span><span class="p">((</span><span class="mi">50</span><span class="p">))</span>
+<span class="n">id4</span><span class="p">((</span><span class="mi">40</span><span class="p">)).</span><span class="o">-&gt;-</span><span class="n">infinity</span><span class="p">,</span><span class="mi">40</span>
+<span class="n">id5</span><span class="p">((</span><span class="mi">50</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id6</span><span class="p">((</span><span class="mi">60</span><span class="p">))</span>
+<span class="n">id5</span><span class="p">((</span><span class="mi">50</span><span class="p">)).</span><span class="o">-&gt;-</span><span class="n">infinity</span><span class="p">,</span><span class="mi">50</span>
+<span class="n">id6</span><span class="p">((</span><span class="mi">60</span><span class="p">))</span><span class="o">--&gt;</span><span class="mi">60</span><span class="p">,</span><span class="o">=</span>
+<span class="n">id6</span><span class="p">((</span><span class="mi">60</span><span class="p">)).</span><span class="o">-&gt;-</span><span class="n">infinity</span><span class="p">,</span><span class="mi">60</span>
+</code></pre></div>
+
+<p>（1）一旦查到某个元素大于该元素便停止查找
+（2）方框是虚构的节点，查找长度=方框上的圆环
+（3)ASL
+$$
+ASL_{success} = \sum_{i=1}^{n} P_i(n-i+1) = \frac{n+1}{2}\
+ASL_{unsuccess} = \sum_{j=1}^{n} Q_j(l_j-1) =  \frac{1+2+...+n+n}{n+1} = \frac{n}{2} +  \frac{n}{n+1}\
+$$</p>
+<h3 id="_4">折半查找（二分查找）</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="n">id29</span><span class="p">((</span><span class="mi">29</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id37</span><span class="p">((</span><span class="mi">37</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id41</span><span class="p">((</span><span class="mi">41</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id43</span><span class="p">((</span><span class="mi">43</span><span class="p">))</span>
+<span class="n">id43</span><span class="p">((</span><span class="mi">43</span><span class="p">))</span><span class="o">--&gt;</span><span class="mi">43</span><span class="p">,</span><span class="o">+</span><span class="n">infinity</span>
+<span class="n">id43</span><span class="p">((</span><span class="mi">43</span><span class="p">))</span><span class="o">--&gt;</span><span class="mi">37</span><span class="p">,</span><span class="mi">43</span>
+<span class="n">id37</span><span class="p">((</span><span class="mi">37</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id32</span><span class="p">((</span><span class="mi">32</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id33</span><span class="p">((</span><span class="mi">33</span><span class="p">))</span>
+<span class="n">id32</span><span class="p">((</span><span class="mi">32</span><span class="p">))</span><span class="o">--&gt;</span><span class="mi">29</span><span class="p">,</span><span class="mi">32</span>
+<span class="n">id33</span><span class="p">((</span><span class="mi">33</span><span class="p">))</span><span class="o">--&gt;</span><span class="mi">33</span><span class="p">,</span><span class="mi">37</span>
+<span class="n">id33</span><span class="p">((</span><span class="mi">33</span><span class="p">))</span><span class="o">--&gt;</span><span class="mi">32</span><span class="p">,</span><span class="mi">33</span>
+<span class="n">id13</span><span class="p">((</span><span class="mi">13</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id16</span><span class="p">((</span><span class="mi">16</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id19</span><span class="p">((</span><span class="mi">19</span><span class="p">))</span><span class="o">--&gt;</span><span class="mi">19</span><span class="p">,</span><span class="mi">29</span>
+<span class="n">id19</span><span class="p">((</span><span class="mi">19</span><span class="p">))</span><span class="o">--&gt;</span><span class="mi">16</span><span class="p">,</span><span class="mi">19</span>
+<span class="n">id29</span><span class="p">((</span><span class="mi">29</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id13</span><span class="p">((</span><span class="mi">13</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id7</span><span class="p">((</span><span class="mi">7</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id10</span><span class="p">((</span><span class="mi">10</span><span class="p">))</span><span class="o">--&gt;</span><span class="mi">10</span><span class="p">,</span><span class="mi">13</span>
+<span class="n">id10</span><span class="p">((</span><span class="mi">10</span><span class="p">))</span><span class="o">--&gt;</span><span class="mi">7</span><span class="p">,</span><span class="mi">10</span>
+<span class="n">id7</span><span class="p">((</span><span class="mi">7</span><span class="p">))</span><span class="o">--&gt;-</span><span class="n">infinity</span><span class="p">,</span><span class="mi">7</span>
+</code></pre></div>
+
+<p>（1）仅适用于顺序表
+（2）代码</p>
+<div class="codehilite"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">binarySearch</span><span class="p">(</span><span class="n">SeqList</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">ElemType</span><span class="w"> </span><span class="n">key</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">L</span><span class="p">.</span><span class="n">tableLen</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">low</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">high</span><span class="p">){</span>
+<span class="w">        </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">low</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">high</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">key</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">mid</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">key</span><span class="p">)</span>
+<span class="w">            </span><span class="n">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="n">low</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>（3）ASL
+$$
+ASL = \frac{1}{n}\sum_{i=1}^{n} l_i = \frac{1}{n}(1<em>1+2</em>2+...+h*2^{h-1}) = \frac{n+1}{n} log_2(n+1)-1 = log_2(n+1)-1\
+h=[log_2(n+1)]（向上取整）
+$$</p>
+<h4 id="11">查找11</h4>
+<h5 id="low7-high43-mid29">low=7, high=43, mid=29</h5>
+<h5 id="1129">11&lt;29</h5>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span>
+<span class="mi">7</span><span class="o">--&gt;</span><span class="n">low</span>
+<span class="mi">10</span>
+<span class="mi">13</span>
+<span class="mi">16</span>
+<span class="mi">19</span>
+<span class="mi">29</span><span class="o">--&gt;</span><span class="n">mid</span>
+<span class="mi">32</span>
+<span class="mi">33</span>
+<span class="mi">37</span>
+<span class="mi">41</span>
+<span class="mi">43</span><span class="o">--&gt;</span><span class="n">high</span>
+</code></pre></div>
+
+<h5 id="low7-highmid-119-mid13">low=7, high=mid-1=19, mid=13</h5>
+<h5 id="1113">11&lt;13</h5>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span>
+<span class="mi">7</span><span class="o">--&gt;</span><span class="n">low</span>
+<span class="mi">10</span>
+<span class="mi">13</span><span class="o">--&gt;</span><span class="n">mid</span>
+<span class="mi">16</span>
+<span class="mi">19</span><span class="o">--&gt;</span><span class="n">high</span>
+<span class="mi">29</span>
+<span class="mi">32</span>
+<span class="mi">33</span>
+<span class="mi">37</span>
+<span class="mi">41</span>
+<span class="mi">43</span>
+</code></pre></div>
+
+<h5 id="low7-highmid-17-mid10">low=7, high=mid-1=7, mid=10</h5>
+<h5 id="117">11&gt;7</h5>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span>
+<span class="mi">7</span><span class="o">--&gt;</span><span class="n">low</span><span class="o">--&gt;</span><span class="n">mid</span>
+<span class="mi">10</span><span class="o">--&gt;</span><span class="n">high</span>
+<span class="mi">13</span>
+<span class="mi">16</span>
+<span class="mi">19</span>
+<span class="mi">29</span>
+<span class="mi">32</span>
+<span class="mi">33</span>
+<span class="mi">37</span>
+<span class="mi">41</span>
+<span class="mi">43</span>
+</code></pre></div>
+
+<h5 id="lowmid110-high10-mid10">low=mid+1=10, high=10, mid=10</h5>
+<h5 id="1010">10&gt;10 ×</h5>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span>
+<span class="mi">7</span>
+<span class="mi">10</span><span class="o">--&gt;</span><span class="n">low</span><span class="o">--&gt;</span><span class="n">mid</span><span class="o">--&gt;</span><span class="n">high</span>
+<span class="mi">13</span>
+<span class="mi">16</span>
+<span class="mi">19</span>
+<span class="mi">29</span>
+<span class="mi">32</span>
+<span class="mi">33</span>
+<span class="mi">37</span>
+<span class="mi">41</span>
+<span class="mi">43</span>
+</code></pre></div>
+
+<h5 id="low">没找到，停在low</h5>
+<h3 id="_5">分块查找</h3>
+<p>（1）将查找表分为若干子块，块内可以无序，但块之间有序的</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span>
+<span class="n">id24</span><span class="p">((</span><span class="mi">24</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id</span><span class="p">((</span><span class="err">索引块</span><span class="mi">24</span><span class="p">,</span><span class="mi">54</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">88</span><span class="p">))</span>
+<span class="n">id21</span><span class="p">((</span><span class="mi">21</span><span class="p">))</span>
+<span class="n">id6</span><span class="p">((</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">id11</span><span class="p">((</span><span class="mi">11</span><span class="p">))</span>
+<span class="n">id8</span><span class="p">((</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">id22</span><span class="p">((</span><span class="mi">22</span><span class="p">))</span>
+<span class="n">id32</span><span class="p">((</span><span class="mi">32</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id</span><span class="p">((</span><span class="err">索引块</span><span class="mi">24</span><span class="p">,</span><span class="mi">54</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">88</span><span class="p">))</span>
+<span class="n">id31</span><span class="p">((</span><span class="mi">31</span><span class="p">))</span>
+<span class="n">id54</span><span class="p">((</span><span class="mi">54</span><span class="p">))</span>
+<span class="n">id72</span><span class="p">((</span><span class="mi">72</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id</span><span class="p">((</span><span class="err">索引块</span><span class="mi">24</span><span class="p">,</span><span class="mi">54</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">88</span><span class="p">))</span>
+<span class="n">id61</span><span class="p">((</span><span class="mi">61</span><span class="p">))</span>
+<span class="n">id78</span><span class="p">((</span><span class="mi">78</span><span class="p">))</span>
+<span class="n">id88</span><span class="p">((</span><span class="mi">88</span><span class="p">))</span><span class="o">--&gt;</span><span class="n">id</span><span class="p">((</span><span class="err">索引块</span><span class="mi">24</span><span class="p">,</span><span class="mi">54</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">88</span><span class="p">))</span>
+<span class="n">id83</span><span class="p">((</span><span class="mi">83</span><span class="p">))</span>
+</code></pre></div>
+
+<p>（2）ASL
+$$
+n:长度\
+b:分块个数\
+s:每块s个记录\
+P:等概率\
+ASL = L_I+L_S = \frac{b+1}{2}+\frac{s+1}{2}=\frac{s^2+2s+n}{2s}\
+s=\sqrt{n},ASL=\sqrt{n}+1\
+采用折半查找：ASL=L_I+L_S=[log_2(b+1)]+\frac{s+1}{2}（向上取整）
+$$</p>
+<h3 id="b">B树（多路平衡查找树）</h3>
+<p>$$
+m阶B树或空树\
+每棵子树至多m棵子树，最多包含m-1个关键字\
+若根节点不是终端节点，至少两棵子树\
+除根结点外所有非叶节点至少[\frac{m}{2}]（向上取整）棵子树（关键字）\
+$$</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span>
+<span class="n">id</span><span class="p">[</span><span class="mi">22</span><span class="p">]</span><span class="o">--&gt;</span><span class="n">id0</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span>
+<span class="n">id</span><span class="p">[</span><span class="mi">22</span><span class="p">]</span><span class="o">--&gt;</span><span class="n">id1</span><span class="p">[</span><span class="mi">36</span><span class="p">,</span><span class="mi">45</span><span class="p">]</span>
+<span class="n">id0</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span><span class="o">--&gt;</span><span class="n">id00</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">id0</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span><span class="o">--&gt;</span><span class="n">id01</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">id0</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span><span class="o">--&gt;</span><span class="n">id02</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">]</span>
+<span class="n">id1</span><span class="p">[</span><span class="mi">36</span><span class="p">,</span><span class="mi">45</span><span class="p">]</span><span class="o">--&gt;</span><span class="n">id10</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">]</span>
+<span class="n">id1</span><span class="p">[</span><span class="mi">36</span><span class="p">,</span><span class="mi">45</span><span class="p">]</span><span class="o">--&gt;</span><span class="n">id11</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">42</span><span class="p">]</span>
+<span class="n">id1</span><span class="p">[</span><span class="mi">36</span><span class="p">,</span><span class="mi">45</span><span class="p">]</span><span class="o">--&gt;</span><span class="n">id12</span><span class="p">[</span><span class="mi">47</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">56</span><span class="p">]</span>
+</code></pre></div>
+        </section>
+    </div>
+</body>
+
+</html>
