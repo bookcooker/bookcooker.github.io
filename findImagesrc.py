@@ -17,7 +17,7 @@ def moveImages(md = 'md'):
             
             pics =[]
             for i in picslist:
-                 if "../images" in i:
+                 if "https://cdn.jsdelivr.net/gh/bookcooker/img@1.0" in i:
                     pics.append(i)
 
             for pic in pics:
